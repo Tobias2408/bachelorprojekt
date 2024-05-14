@@ -1,0 +1,14 @@
+{
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./tests",  // Set to the parent directory of both unittest and integration_test
+    "-p",
+    "*_test.py"  // Pattern to match all test files in subdirectories
+  ],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true,
+  "python.analysis.extraPaths": [
+    "./src"  // Assuming source files are here, adjust if different
+  ]
+}
