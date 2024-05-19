@@ -59,4 +59,46 @@ class DataTransformer:
         df = dataframe.copy()
         df[column] = winsorize(df[column], limits=limits)
         return df
+    @staticmethod
+    def auto_transform(df, target, outlier_method='median', log_threshold=0.5, outlier_threshold=1.5, winsorize_limits=(0.05, 0.05)):
+        """
+        Automatically applies transformations based on data characteristics.
+        
+        Parameters:
+        df (pd.DataFrame): DataFrame containing the data.
+        target (str): The target column name.
+        outlier_method (str): Method to use for imputing outliers ('median' or 'mean').
+        log_threshold (float): Skewness threshold above which log transformation is applied.
+        outlier_threshold (float): IQR multiplier threshold for detecting outliers.
+        winsorize_limits (tuple): Limits for Winsorizing the data.
+        
+        Returns:
+        pd.DataFrame: Transformed DataFrame.
+        """
+        transformed_df = df.copy()
+        numeric_columns = transformed_df.select_dtypes(include=[np.number]).columns.tolist()
+        numeric_columns.remove(target)
+        
+        for column in numeric_columns:
+            # Check skewness and apply log transformation if necessary
+            skewness = transformed_df[column].skew()
+            if abs(skewness) > log_threshold:
+                transformed_df = DataTransformer.apply_log_transformation(transformed_df, column)
+                print(f"Applied log transformation to {column} due to high skewness ({skewness}).")
+            
+            # Check for outliers and apply imputation
+            Q1 = transformed_df[column].quantile(0.25)
+            Q3 = transformed_df[column].quantile(0.75)
+            IQR = Q3 - Q1
+            lower_bound = Q1 - outlier_threshold * IQR
+            upper_bound = Q3 + outlier_threshold * IQR
+            outliers = ((transformed_df[column] < lower_bound) | (transformed_df[column] > upper_bound)).sum()
+            if outliers > 0:
+                transformed_df = DataTransformer.impute_outliers(transformed_df, column, method=outlier_method)
+                print(f"Imputed outliers in {column} ({outliers} outliers found).")
+            
+            # Apply Winsorizing
+            transformed_df[column] = winsorize(transformed_df[column], limits=winsorize_limits)
+            print(f"Applied Winsorizing to {column}.")
 
+        return transformed_df
