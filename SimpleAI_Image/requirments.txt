@@ -1,0 +1,7 @@
+numpy
+pandas
+sqlalchemy
+pgvector
+matplotlib
+tensorflow
+scikit-lear

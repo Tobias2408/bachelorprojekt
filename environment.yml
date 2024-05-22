@@ -1,0 +1,40 @@
+name: AI-Mac
+channels:
+  - apple
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip>=24.0
+  - jupyter
+  - scikit-learn
+  - scipy
+  - pandas
+  - bs4
+  - wordcloud
+  - textblob
+  - gensim
+  - pandas-profiling
+  - pandas-datareader
+  - matplotlib
+  - seaborn
+  - pillow
+  - tqdm
+  - requests
+  - h5py
+  - pyyaml
+  - flask
+  - boto3
+  - ipykernel
+  - sqlalchemy
+  - typing_extensions
+  - pip:
+      - tensorflow-macos
+      - tensorflow_datasets
+      - tensorflow-metal
+      - bayesian-optimization
+      - kaggle
+      - jupyterlab
+      - psycopg2-binary
+      - pgvector
+      - plotly
+   
