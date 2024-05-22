@@ -1,11 +1,7 @@
-name: Run Tests
+name: Run tests
 
 on:
   push:
-    branches:
-      - main
-      - SimpleAI_Image
-  pull_request:
     branches:
       - main
       - SimpleAI_Image
@@ -14,23 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:latest
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: testuser
-          POSTGRES_PASSWORD: testpassword
-          POSTGRES_DB: testdb
-        options: >-
-          --health-cmd "pg_isready -U testuser -d testdb"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Python
@@ -38,13 +19,17 @@ jobs:
       with:
         python-version: '3.10'
 
+    - name: Uninstall global SimpleAI_Image if exists
+      run: pip uninstall -y SimpleAI_Image || true
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r SimpleAI_Image/requirments.txt
+        pip install -r SimpleAI_Image/requirements.txt
+        pip install -r SimpleAI_Image/requirements-test.txt
+
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$(pwd)/SimpleAI_Image" >> $GITHUB_ENV
 
     - name: Run tests
-      env:
-        TEST_DB_URL: postgres://testuser:testpassword@localhost:5432/testdb
-      run: |
-        python -m unittest discover -s SimpleAI_Image/tests -p "Test*.py"
+      run: python -m unittest discover -s SimpleAI_Image/tests -p "Test*.py"
