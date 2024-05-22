@@ -2,8 +2,8 @@ import unittest
 from unittest.mock import MagicMock
 import numpy as np
 import pandas as pd
-from SimpleAI_Image import DataProcessor  # Adjust the import to your module's structure
-
+from SimpleAI_Image.SimpleAI_Image import DataProcessor  # Adjust the import to your module's structure
+# Test uses file directly not pip
 class TestDataProcessor(unittest.TestCase):
     def setUp(self):
         # Create a mock db_handler

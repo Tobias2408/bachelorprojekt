@@ -4,8 +4,9 @@ import pandas as pd
 import os
 from sqlalchemy.exc import IntegrityError, ProgrammingError, StatementError
 from sqlalchemy import create_engine, text
-from SimpleAI_Image import DatabaseHandler  # Ensure the correct import path
+from SimpleAI_Image.SimpleAI_Image import DatabaseHandler  # Ensure the correct import path
 from dotenv import load_dotenv
+# Test uses file directly not pip
 
 # Load environment variables from .env file
 load_dotenv()
