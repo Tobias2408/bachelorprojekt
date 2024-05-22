@@ -4,4 +4,4 @@ sqlalchemy
 pgvector
 matplotlib
 tensorflow
-scikit-lear
+scikit-learn
