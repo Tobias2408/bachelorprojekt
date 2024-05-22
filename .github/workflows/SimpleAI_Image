@@ -5,10 +5,7 @@ on:
     branches:
       - main
       - SimpleAI_Image
-  pull_request:
-    branches:
-      - main
-      - SimpleAI_Image
+
 
 jobs:
   test:
