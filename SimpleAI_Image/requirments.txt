@@ -5,4 +5,4 @@ pgvector
 matplotlib
 tensorflow
 scikit-learn
-SimpleAI-Image
+SimpleAI_Image
