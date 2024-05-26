@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from DataPreparation.DataCleaner.dataCleaner import dataCleaner  # Ensure this is the correct import path
+from DataPreparation.DataCleaner.dataCleaner import DataCleaner  # Ensure this is the correct import path
 from DataPreparation.DataCleaner.duplicationHandler import DuplicationHandler
 
 class RemoveEmptyDataAndDuplicatesTest(unittest.TestCase):
@@ -12,12 +12,18 @@ class RemoveEmptyDataAndDuplicatesTest(unittest.TestCase):
             'Label': [10, 10, 11, None, 12, 13]
         }
         self.df = pd.DataFrame(data)
+        self.cleaner = DataCleaner()
+        self.duplication_handler = DuplicationHandler()
 
     def test_smart_clean_and_remove_duplicates(self):
-        cleaned_df = dataCleaner().smart_clean_data(self.df, 'Label', 0.3, 0.5)
+        cleaned_df = self.cleaner.smart_clean_data(self.df, 'Label', 0.3, 0.5)
+        print("Cleaned DataFrame:")
         print(cleaned_df)
-        final_df = DuplicationHandler.remove_duplicates(cleaned_df)
+
+        final_df = self.duplication_handler.remove_duplicates(cleaned_df)
+        print("Final DataFrame after removing duplicates:")
         print(final_df)
+
         expected_data = {
             'Feature1': [1.0, 2.0, 4.0, 4.0],
             'Feature2': [4.0, 2.0, 2.0, 1.0],

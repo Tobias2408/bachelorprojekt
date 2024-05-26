@@ -37,4 +37,5 @@ dependencies:
       - psycopg2-binary
       - pgvector
       - plotly
+      - spacy
    

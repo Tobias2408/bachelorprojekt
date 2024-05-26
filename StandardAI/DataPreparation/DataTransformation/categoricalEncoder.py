@@ -1,5 +1,6 @@
+import unittest
 import pandas as pd
-import numpy as np
+from pandas.testing import assert_frame_equal
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 import spacy
 
@@ -26,7 +27,6 @@ class WordEmbedder:
         return pd.concat([df.drop(columns=[column]), embeddings_df], axis=1)
 
 class CategoricalEncoder:
-
     @staticmethod
     def fit_label_encoding(df, columns):
         encoders = {}
@@ -95,5 +95,3 @@ class CategoricalEncoder:
     def fit_transform_onehot_encoding(df, columns, max_categories=None):
         df, encoders, onehot_encoded_cols = CategoricalEncoder.fit_onehot_encoding(df, columns, max_categories)
         return df, encoders, onehot_encoded_cols
-
-
