@@ -50,8 +50,8 @@ jobs:
         ls -al preprocess_ai
         ls -al preprocess_ai/DataPreparation
         ls -al preprocess_ai/DataPreparation/DataCleaner
-        ls -al preprocess_ai/DataTransformation
-        ls -al preprocess_ai/DataReduction
+        ls -al preprocess_ai/DataPreparation/DataReduction
+        ls -al preprocess_ai/DataPreparation/DataTransformation
         ls -al preprocess_ai/tests
 
     - name: Set PYTHONPATH
