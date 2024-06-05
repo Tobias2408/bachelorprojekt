@@ -1,0 +1,11 @@
+iteration,mean_test_score,std_test_score,params
+1,-40346.11747589658,1902.9778780553243,"{'optimizer': 'rmsprop', 'neurons': 32, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 32}"
+2,-40633.23247037205,1641.009603764207,"{'optimizer': 'rmsprop', 'neurons': 64, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 16}"
+3,-40496.39481896951,1643.7489634630292,"{'optimizer': 'rmsprop', 'neurons': 32, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 32}"
+4,-40663.27959569623,1677.7157861549858,"{'optimizer': 'rmsprop', 'neurons': 64, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 16}"
+5,-40691.204638434196,1627.776335303799,"{'optimizer': 'adam', 'neurons': 32, 'epochs': 50, 'dropout_rate': 0.3, 'batch_size': 32}"
+6,-40604.91464657165,1564.7641759511498,"{'optimizer': 'rmsprop', 'neurons': 32, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 32}"
+7,-40684.7433978054,1627.5672946076265,"{'optimizer': 'rmsprop', 'neurons': 32, 'epochs': 50, 'dropout_rate': 0.3, 'batch_size': 16}"
+8,-40664.41914230425,1618.2282086723026,"{'optimizer': 'rmsprop', 'neurons': 64, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 16}"
+9,-40565.406744502936,1622.116018476081,"{'optimizer': 'rmsprop', 'neurons': 32, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 32}"
+10,-40552.312555169614,1704.5186370420597,"{'optimizer': 'rmsprop', 'neurons': 32, 'epochs': 100, 'dropout_rate': 0.3, 'batch_size': 32}"
