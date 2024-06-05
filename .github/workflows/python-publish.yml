@@ -1,4 +1,4 @@
-name: Test and Upload Python Package preprocces
+name: Test and Upload Python Package
 
 on:
   push:
