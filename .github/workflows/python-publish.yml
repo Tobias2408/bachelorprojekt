@@ -89,12 +89,4 @@ jobs:
         python -m build
 
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@v1.4.2
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
-
-    - name: Upload package
-      run: |
-        cd preprocess_ai
-        twine upload dist/*
+      uses: pypa/gh-action-pypi-publish@v1.
