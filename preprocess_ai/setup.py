@@ -10,8 +10,7 @@ setup(
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/preprocess_ai",
-    packages=find_packages(where="preprocess_ai"),
-    package_dir={"": "preprocess_ai"},
+    packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
