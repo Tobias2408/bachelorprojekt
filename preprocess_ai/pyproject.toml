@@ -24,6 +24,3 @@ dependencies = [
     "python-dotenv==1.0.1",
     "scipy==1.13.0"
 ]
-
-[tool.setuptools]
-packages = ["preprocess_ai"]

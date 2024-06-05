@@ -11,6 +11,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/preprocess_ai",
     packages=find_packages(),
+    package_dir={"": "."},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
