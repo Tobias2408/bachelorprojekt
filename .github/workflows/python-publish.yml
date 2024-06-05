@@ -54,13 +54,14 @@ jobs:
         ls -al preprocess_ai/tests
 
     - name: Set PYTHONPATH
-      run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+      run: echo "PYTHONPATH=$(pwd)/preprocess_ai" >> $GITHUB_ENV
 
     - name: Set TEST_DB_URL environment variable
       run: echo "TEST_DB_URL=postgresql://testuser:testpassword@localhost:5432/testdb" >> $GITHUB_ENV
 
     - name: Run tests
-      run: python -m unittest discover -s preprocess_ai/tests -p "Test*.py"
+      working-directory: preprocess_ai
+      run: python -m unittest discover -s tests -p "Test*.py"
 
   deploy:
     runs-on: ubuntu-latest
@@ -77,9 +78,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
     - name: Build package
+      working-directory: preprocess_ai
       run: python -m build
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
+      working-directory: preprocess_ai
