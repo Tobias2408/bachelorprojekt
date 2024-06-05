@@ -3,7 +3,7 @@ import os
 
 setup(
     name="preprocess_ai",
-    version="0.2",
+    version="0.2.1",
     author="Your Name",
     author_email="your_email@example.com",
     description="A package for preprocessing data for AI models",

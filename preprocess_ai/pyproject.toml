@@ -1,26 +1,18 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = [ "setuptools", "wheel",]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "preprocess_ai"
-version = "0.2"
+version = "0.2.1"
 description = "A package for preprocessing data for AI models"
-readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.6"
-authors = [
-    { name = "Your Name", email = "your_email@example.com" }
-]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent"
-]
-dependencies = [
-    "pandas==1.5.3",
-    "numpy==1.23.5",
-    "scikit-learn==1.2.2",
-    "openai==0.28.0",
-    "python-dotenv==1.0.1",
-    "scipy==1.13.0"
-]
+classifiers = [ "Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Operating System :: OS Independent",]
+dependencies = [ "pandas==1.5.3", "numpy==1.23.5", "scikit-learn==1.2.2", "openai==0.28.0", "python-dotenv==1.0.1", "scipy==1.13.0",]
+[[project.authors]]
+name = "Your Name"
+email = "your_email@example.com"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
