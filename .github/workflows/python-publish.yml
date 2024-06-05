@@ -93,8 +93,3 @@ jobs:
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
-
-    - name: Upload package
-      run: |
-        cd preprocess_ai
-        twine upload dist/*
