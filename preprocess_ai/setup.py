@@ -1,17 +1,15 @@
 from setuptools import setup, find_packages
-import os
 
 setup(
     name="preprocess_ai",
-    version="0.2.5",
+    version="0.2.7",
     author="Your Name",
     author_email="your_email@example.com",
     description="A package for preprocessing data for AI models",
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
+    long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/preprocess_ai",
     packages=find_packages(),
-    package_dir={"": "."},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
