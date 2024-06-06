@@ -1,6 +1,6 @@
 import pandas as pd
 
-class OutlierDetector:
+class OutlierHandler:
     def __init__(self, dataframe, column):
         self.df = dataframe
         self.column = column

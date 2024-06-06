@@ -1,11 +1,14 @@
-from .DataCleaner import dataCleaner, duplicationHandler, outlierHandler
-from .DataReduction import dimensionalityReducer, featureSelector
-from .DataTransformation import categoricalEncoder, featureEngineer, scaler
-from .DataPartitioner import DataPartitioner
+from preprocess_ai.DataPreparation.DataCleaner import DataCleaner, DuplicationHandler, OutlierHandler
+from preprocess_ai.DataPreparation.DataReduction import DimensionalityReducer, FeatureSelector
+from preprocess_ai.DataPreparation.DataTransformation import CategoricalEncoder, FeatureEngineer, Scaler
 
 __all__ = [
-    'dataCleaner', 'duplicationHandler', 'outlierHandler',
-    'dimensionalityReducer', 'featureSelector',
-    'categoricalEncoder', 'featureEngineer', 'scaler',
-    'DataPartitioner'
+    'DataCleaner',
+    'DuplicationHandler',
+    'OutlierHandler',
+    'DimensionalityReducer',
+    'FeatureSelector',
+    'CategoricalEncoder',
+    'FeatureEngineer',
+    'Scaler'
 ]
