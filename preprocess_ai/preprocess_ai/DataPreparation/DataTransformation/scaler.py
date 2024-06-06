@@ -1,6 +1,6 @@
 import numpy as np
 
-class SimpleScaler:
+class Scaler:
     def standardize(self, data):
         """
         Standardize the data to have zero mean and unit variance.
