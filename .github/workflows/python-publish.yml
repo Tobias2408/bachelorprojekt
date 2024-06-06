@@ -41,18 +41,16 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd preprocess_ai
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
     - name: Verify directory structure
       run: |
-        cd preprocess_ai
-        ls -al
-        ls -al DataPreparation
-        ls -al DataPreparation/DataCleaner
-        ls -al DataPreparation/DataReduction
-        ls -al DataPreparation/DataTransformation
+        ls -al preprocess_ai
+        ls -al preprocess_ai/DataPreparation
+        ls -al preprocess_ai/DataPreparation/DataCleaner.py
+        ls -al preprocess_ai/DataPreparation/DataReduction
+        ls -al preprocess_ai/DataPreparation/DataTransformation
         ls -al tests
 
     - name: Set PYTHONPATH
@@ -63,7 +61,6 @@ jobs:
 
     - name: Run tests
       run: |
-        cd preprocess_ai
         python -m unittest discover -s tests -p "Test*.py"
 
   deploy:
@@ -81,14 +78,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd preprocess_ai
         python -m pip install --upgrade pip
         pip install build twine toml
 
     - name: Increment version
-      run: |
-        cd preprocess_ai
-        python increment_version.py
+      run: python preprocess_ai/increment_version.py
 
     - name: Commit updated version
       run: |
@@ -99,14 +93,10 @@ jobs:
         git push
 
     - name: Build package
-      run: |
-        cd preprocess_ai
-        python -m build
+      run: python -m build
 
     - name: Verify dist directory
-      run: |
-        cd preprocess_ai
-        ls -al dist
+      run: ls -al preprocess_ai/dist
 
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@v1.4.2
