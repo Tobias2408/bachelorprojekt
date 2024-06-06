@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import numpy as np
 from pandas.testing import assert_frame_equal
-from DataPreparation.DataTransformation.featureEngineer import FeatureEngineer
+from preprocess_ai.DataPreparation.DataTransformation.featureEngineer import FeatureEngineer
 
 class TestFeatureEngineer(unittest.TestCase):
 

@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from DataPreparation.DataTransformation.scaler import SimpleScaler  # Assume the scaler class is saved in scaler_module.py
+from preprocess_ai.DataPreparation.DataTransformation.scaler import SimpleScaler  # Assume the scaler class is saved in scaler_module.py
 from numpy.testing import assert_array_almost_equal
 class TestScaler(unittest.TestCase):
     def setUp(self):

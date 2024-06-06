@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 from pandas.testing import assert_frame_equal, assert_series_equal
-from DataPreparation.DataPartitioner import DataPartitioner  # Update this import based on your file structure
+from preprocess_ai.DataPreparation.DataPartitioner import DataPartitioner  # Update this import based on your file structure
 
 class TestDataPartitioner(unittest.TestCase):
 

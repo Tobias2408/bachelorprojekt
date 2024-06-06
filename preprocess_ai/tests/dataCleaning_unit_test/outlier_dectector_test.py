@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from DataPreparation.DataCleaner.outlierHandler import OutlierDetector  # Correct import statement if your class is in 'outlierDetector.py'
+from preprocess_ai.DataPreparation.DataCleaner.outlierHandler import OutlierDetector  # Correct import statement if your class is in 'outlierDetector.py'
 
 class TestOutlierDetector(unittest.TestCase):
     def setUp(self):

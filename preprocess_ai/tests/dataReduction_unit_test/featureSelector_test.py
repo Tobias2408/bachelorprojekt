@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 from pandas.testing import assert_frame_equal
 from sklearn.feature_selection import f_classif, f_regression
-from DataPreparation.DataReduction.featureSelector import FeatureSelector  # Update this import based on your file structure
+from preprocess_ai.DataPreparation.DataReduction.featureSelector import FeatureSelector  # Update this import based on your file structure
 
 class TestFeatureSelector(unittest.TestCase):
 

@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import numpy as np
 from scipy.stats.mstats import winsorize
-from DataPreparation.DataCleaner.dataTransformer import DataTransformer  # Assuming DataTransformer is in 'dataTransformer.py'
+from preprocess_ai.DataPreparation.DataCleaner.dataTransformer import DataTransformer  # Assuming DataTransformer is in 'dataTransformer.py'
 
 class TestDataCleanerTransformer(unittest.TestCase):
 

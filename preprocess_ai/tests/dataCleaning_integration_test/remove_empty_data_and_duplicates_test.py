@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
-from DataPreparation.DataCleaner.dataCleaner import DataCleaner  # Ensure this is the correct import path
-from DataPreparation.DataCleaner.duplicationHandler import DuplicationHandler
+from preprocess_ai.DataPreparation.DataCleaner.dataCleaner import DataCleaner  # Ensure this is the correct import path
+from preprocess_ai.DataPreparation.DataCleaner.duplicationHandler import DuplicationHandler
 
 class RemoveEmptyDataAndDuplicatesTest(unittest.TestCase):
     def setUp(self):

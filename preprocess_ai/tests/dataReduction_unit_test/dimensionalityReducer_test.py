@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 from sklearn.decomposition import PCA
 from pandas.testing import assert_frame_equal
-from DataPreparation.DataReduction.dimensionalityReducer import DimensionalityReducer  # Update this import based on your file structure
+from preprocess_ai.DataPreparation.DataReduction.dimensionalityReducer import DimensionalityReducer  # Update this import based on your file structure
 
 class TestDimensionalityReducer(unittest.TestCase):
 

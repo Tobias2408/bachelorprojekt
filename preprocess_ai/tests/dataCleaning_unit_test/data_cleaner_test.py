@@ -4,7 +4,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from DataPreparation.DataCleaner.dataCleaner import DataCleaner
+from preprocess_ai.DataPreparation.DataCleaner.dataCleaner import DataCleaner
 
 class DataCleanerTest(unittest.TestCase):
     def setUp(self):

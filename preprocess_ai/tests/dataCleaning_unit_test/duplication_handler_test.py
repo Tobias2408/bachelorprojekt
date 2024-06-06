@@ -5,7 +5,7 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from DataPreparation.DataCleaner.duplicationHandler import DuplicationHandler  # type: ignore # Assuming the class is saved in a file named duplication_handler.py
+from preprocess_ai.DataPreparation.DataCleaner.duplicationHandler import DuplicationHandler  # type: ignore # Assuming the class is saved in a file named duplication_handler.py
 
 class TestDuplicationHandler(unittest.TestCase):
     def setUp(self):
