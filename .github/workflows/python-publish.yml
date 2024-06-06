@@ -83,7 +83,9 @@ jobs:
         pip install build twine toml
 
     - name: Increment version
-      run: python preprocess_ai/increment_version.py
+      run: |
+        cd preprocess_ai
+        python increment_version.py
 
     - name: Commit updated version
       run: |
