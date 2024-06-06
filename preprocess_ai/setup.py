@@ -2,8 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name="preprocess_ai",
-    version="0.2.7",
-    author="Your Name",
+
+version="0.2.7",
+   author="Your Name",
     author_email="your_email@example.com",
     description="A package for preprocessing data for AI models",
     long_description=open('README.md').read(),
