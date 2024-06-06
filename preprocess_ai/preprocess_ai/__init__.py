@@ -1,4 +1,4 @@
-from .DataPreparation import (
+from preprocess_ai.DataPreparation import (
     DataCleaner,
     DuplicationHandler,
     OutlierHandler,
@@ -6,7 +6,8 @@ from .DataPreparation import (
     FeatureSelector,
     CategoricalEncoder,
     FeatureEngineer,
-    Scaler
+    Scaler,
+    DataPartitioner
 )
 
 __all__ = [
@@ -17,5 +18,6 @@ __all__ = [
     'FeatureSelector',
     'CategoricalEncoder',
     'FeatureEngineer',
-    'Scaler'
+    'Scaler',
+    'DataPartitioner'
 ]
