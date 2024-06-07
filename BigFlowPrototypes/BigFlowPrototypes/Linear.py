@@ -1,8 +1,11 @@
+import unittest
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import time
+import tempfile
+import os
 
 # Timing function
 def timeit(method):
@@ -44,6 +47,7 @@ def main(input_file, label):
     return process_data(input_file, label)
 
 if __name__ == "__main__":
+    import argparse
     parser = argparse.ArgumentParser(description="Process input data for AI models.")
     parser.add_argument('input_file', type=str, help='Path to the input data file (e.g., movies.csv)')
     parser.add_argument('label', type=str, help='Name of the label column (e.g., Popularity)')

@@ -7,12 +7,15 @@ from sklearn.feature_selection import f_regression
 from dotenv import load_dotenv
 import os
 import time
+import warnings
+
+# Suppress specific numpy warning
+warnings.filterwarnings("ignore", message="Warning: 'partition' will ignore the 'mask' of the MaskedArray")
 
 # Add the path to the StandardAI package
 import sys
 project_root = '/Users/tobiaspoulsen/Desktop/Bachelor/bachelorprojekt'
 sys.path.append(project_root)
-
 
 from preprocess_ai.DataPreparation.DataCleaner.dataCleaner import DataCleaner
 from preprocess_ai.DataPreparation.DataCleaner.duplicationHandler import DuplicationHandler
@@ -25,14 +28,14 @@ from preprocess_ai.DataPreparation.DataReduction.featureSelector import FeatureS
 load_dotenv()
 
 # Set OpenAI API key
-from openai import OpenAI
+import openai
 
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Function to get text embeddings using OpenAI
 def get_embedding(text, model="text-embedding-ada-002"):
-    response = client.embeddings.create(model=model, input=[text])
-    return response.data[0].embedding
+    response = openai.Embedding.create(model=model, input=[text])
+    return response['data'][0]['embedding']
 
 # Function to embed text columns using OpenAI
 def embed_column_openai(df, column):
@@ -41,6 +44,12 @@ def embed_column_openai(df, column):
     embedded_df = pd.DataFrame(embeddings.tolist(), index=df.index).add_prefix(f'{column}_embed_')
     print(f"Finished embedding column: {column}, shape: {embedded_df.shape}")
     return embedded_df
+
+# Function to ensure no masked arrays are used
+def ensure_no_masked_arrays(arr):
+    if np.ma.is_masked(arr):
+        return arr.data  # Convert masked array to regular array
+    return arr
 
 # Timing function
 def timeit(method):
@@ -124,14 +133,17 @@ def main(input_data_path, label_column, columns_to_embed):
         print("NaN values found in the data after imputation. Performing imputation again.")
         transformed_df = pd.DataFrame(imputer.fit_transform(transformed_df), columns=consistent_columns)
 
+    # Ensure no masked arrays are passed to operations
+    transformed_df = transformed_df.apply(ensure_no_masked_arrays)
+
     # Feature selection using SelectKBest
     print("Selecting features...")
     X = transformed_df.drop(columns=[label])
     y = transformed_df[label]
     
     feature_selector = FeatureSelector()
-    selected_df = feature_selector.select_k_best(X, y, k=10, score_func=f_regression)
-    selected_df[label] = y
+    selected_df = feature_selector.select_k_best(X, y, k=10, score_func=f_regression).copy()  # Ensure it's a copy
+    selected_df.loc[:, label] = y  # Use .loc to avoid SettingWithCopyWarning
 
     # Dimensionality reduction using PCA
     print("Reducing dimensionality...")
@@ -153,6 +165,7 @@ def main(input_data_path, label_column, columns_to_embed):
     return X_train, X_test, y_train, y_test
 
 if __name__ == "__main__":
+    import argparse
     parser = argparse.ArgumentParser(description="Process input data for AI models.")
     parser.add_argument('input_data_path', type=str, help='Path to the input data file (e.g., titanic.csv)')
     parser.add_argument('label_column', type=str, help='Name of the label column (e.g., Survived)')
