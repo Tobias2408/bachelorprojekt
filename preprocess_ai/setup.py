@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="preprocess_ai",
 
-version="0.2.15",
+version="0.2.16",
    author="Your Name",
     author_email="your_email@example.com",
     description="A package for preprocessing data for AI models",
